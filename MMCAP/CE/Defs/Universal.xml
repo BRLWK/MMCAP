@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- light barrel melee bases -->
+
+  <ModularWeapons.ModularPartDef Name="MMCAP_Compensator_Base" Abstract="True">
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>muzzle</label>
+	    <capacities>
+	    	<li>Poke</li>
+	    </capacities>
+	    <power>2</power>
+	    <cooldownTime>1.56</cooldownTime>
+	    <armorPenetrationBlunt>0.666</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+    </toolFactor>
+    <!--=====-->
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef Name="MMCAP_Suppressor_Base" Abstract="True">
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>muzzle</label>
+	    <capacities>
+	    	<li>Poke</li>
+	    </capacities>
+	    <power>2</power>
+	    <cooldownTime>1.57</cooldownTime>
+	    <armorPenetrationBlunt>0.777</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+    </toolFactor>
+    <!--=====-->
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef Name="MMCAP_LightSpike_Base" Abstract="True">
+    <!--=====-->
+    <toolFactors>
+      <li Class="CombatExtended.ToolCE">
+	      <label>spike bayonet</label>
+	      <capacities>
+          <li>Stab</li>
+	      </capacities>
+	      <power>8</power>
+	      <cooldownTime>1.26</cooldownTime>
+        <armorPenetrationSharp>0.84</armorPenetrationSharp>
+	      <armorPenetrationBlunt>0.25</armorPenetrationBlunt>
+	      <linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+      </li>
+      <li Class="CombatExtended.ToolCE">
+	      <label>spike bayonet</label>
+	      <capacities>
+          <li>Cut</li>
+	      </capacities>
+	      <power>9</power>
+	      <cooldownTime>1.51</cooldownTime>
+        <armorPenetrationSharp>0.01</armorPenetrationSharp>
+	      <armorPenetrationBlunt>0.25</armorPenetrationBlunt>
+	      <linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+      </li>
+    </toolFactors>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <parryChance>0.4</parryChance>
+        <counterParryBonus>0.9</counterParryBonus>
+      </li>
+    </additionalFactors>
+    <statModifiers>
+        <MeleeCritChance>2</MeleeCritChance>
+        <MeleeDodgeChance>0.05</MeleeDodgeChance>
+    </statModifiers>
+    <!--=====-->
+    <costList>
+      <Steel>6</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+</Defs>

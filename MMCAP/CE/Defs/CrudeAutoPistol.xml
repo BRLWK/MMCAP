@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- Weapon -->
+
+  <ThingDef ParentName="BaseModularWeapon">
+    <defName>MM_CrudePistol_CE</defName>
+    <label>crude autopistol</label>
+    <description>Heavily improvised pistol, the design closely resembles the Sten gun but at a slightly smaller scale. Only capable of firing low pressure pistol cartridges.</description>
+    <graphicData>
+      <drawSize MayRequire="CarnySenpai.EnableOversizedWeapons">1.65</drawSize>
+      <texPath>crudepistol</texPath>
+      <graphicClass>ModularWeapons.Graphic_Modular</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_SMG</soundInteract>
+    <recipeMaker>
+      <researchPrerequisite>Gunsmithing</researchPrerequisite>
+    </recipeMaker>
+    <weaponTags Inherit="False">
+      <li>SimpleGun</li>
+      <!--li>Gun</li>
+      <li>ShortShots</li>
+      <li>Autopistol</li>
+      <li>CE_Sidearm</li>
+	    <li>CE_AI_BROOM</li>
+	    <li>CE_OneHandedWeapon</li-->
+    </weaponTags>
+    <weaponClasses>
+      <li>RangedLight</li>
+      <li>ShortShots</li>
+    </weaponClasses>
+    <statBases>
+      <Mass>1</Mass>
+      <RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+      <SightsEfficiency>0</SightsEfficiency>
+      <ShotSpread>0.6</ShotSpread>
+      <SwayFactor>1.87</SwayFactor>
+      <Bulk>4.26</Bulk>
+      <WorkToMake>7000</WorkToMake>
+    </statBases>
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>15</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <verbs>
+      <li Class="CombatExtended.VerbPropertiesCE">
+        <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+        <recoilAmount>1.4</recoilAmount>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_22LR_FMJ</defaultProjectile>
+        <warmupTime>0.6</warmupTime>
+        <range>12</range>
+        <burstShotCount>5</burstShotCount>
+        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+        <soundCast>Shot_MachinePistol</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>5</muzzleFlashScale>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="ModularWeapons.CompProperties_ModularParts">
+        <compClass>ModularWeapons.CompModularParts</compClass>
+        <partKinds>
+          <li>CAP_Reciever</li>
+          <li>CAP_Mag</li>
+          <li>CAP_Stock</li>
+          <li>CAP_Barrel</li>
+          <li>CAP_Sight</li>
+          <li>CAP_Underbarrel</li>
+        </partKinds>
+        <majorKinds>
+          <li>CAP_Mag</li>
+          <li>CAP_Stock</li>
+          <li>CAP_Barrel</li>
+        </majorKinds>
+        <defaultParts>
+          <li>CAP_Mag_Standard</li>
+          <li>CAP_Grip_Standard</li>
+          <li>CAP_Barrel_Standard</li>
+        </defaultParts>
+      </li>
+      <li Class="ModularWeapons_CEModule.CompProperties_AmmoUserMW">
+        <magazineSize>11</magazineSize>
+        <reloadTime>4</reloadTime>
+        <ammoSet>AmmoSet_22LR</ammoSet>
+      </li>
+      <li Class="ModularWeapons_CEModule.CompProperties_FireModesMW">
+        <aimedBurstShotCount>3</aimedBurstShotCount>
+        <aiUseBurstMode>FALSE</aiUseBurstMode>
+        <aiAimMode>Snapshot</aiAimMode>
+      </li>
+    </comps>
+    <tools>
+    </tools>
+  </ThingDef>
+
+    <!-- ============================================================== Parts -->
+    <!-- =============================== Reciever -->
+    <!-- light -->
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Rec_32ACP</defName>
+    <label>Light reciever (.32 ACP)</label>
+    <description>Light automatic SMG reciever chambered for .32 ACP.</description>
+    <kind>CAP_Reciever</kind>
+    <path>Base</path>
+    <!--=====-->
+    <massFactor>0.04</massFactor>
+    <ticksBetweenShotsFactor>1</ticksBetweenShotsFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <overrideAmmoSet>AmmoSet_32ACP</overrideAmmoSet>
+        <swayFactor>0.06</swayFactor>
+        <bulk>0.03</bulk>
+        <recoilAmount>0.29</recoilAmount>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>5</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+    <!-- medium -->
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Rec_9mm</defName>
+    <label>Medium reciever (9mm Parabellum)</label>
+    <description>Medium automatic SMG reciever chambered for 9mm para. Lowered rate-of-fire.</description>
+    <kind>CAP_Reciever</kind>
+    <path>Base</path>
+    <!--=====-->
+    <massFactor>0.31</massFactor>
+    <cooldownFactor>0.02</cooldownFactor>
+    <ticksBetweenShotsFactor>4</ticksBetweenShotsFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <overrideAmmoSet>AmmoSet_9x19mmPara</overrideAmmoSet>
+        <swayFactor>0.11</swayFactor>
+        <bulk>0.06</bulk>
+        <recoilAmount>0.65</recoilAmount>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>5</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+    <!-- =============================== Magazine -->
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Mag_Standard</defName>
+    <label>Small magazine</label>
+    <description>small scrap magazine. Holds 11 rounds.</description>
+    <kind>CAP_Mag</kind>
+    <path>Mag_Short</path>
+    <!--=====-->
+    <!--=====-->
+    <costList>
+      <Steel>4</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Mag_Med</defName>
+    <label>Medium magazine</label>
+    <description>Scrap magazine. Holds 24 rounds</description>
+    <kind>CAP_Mag</kind>
+    <path>Mag_Med</path>
+    <!--=====-->
+    <massFactor>0.04</massFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <magazineSize>13</magazineSize>
+        <swayFactor>0.03</swayFactor>
+        <bulk>0.05</bulk>
+        <recoilAmount>-0.02</recoilAmount>
+        <reloadTime>0.09</reloadTime>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <Steel>8</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Mag_Long</defName>
+    <label>Long magazine</label>
+    <description>Long scrap magazine. Holds 42 rounds</description>
+    <kind>CAP_Mag</kind>
+    <path>Mag_Long</path>
+    <!--=====-->
+    <massFactor>0.09</massFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <magazineSize>31</magazineSize>
+        <swayFactor>0.07</swayFactor>
+        <bulk>0.09</bulk>
+        <recoilAmount>-0.04</recoilAmount>
+        <reloadTime>0.2</reloadTime>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>2</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Mag_Drum</defName>
+    <label>Drum magazine</label>
+    <description>Improvised drum magazine. Holds 68 rounds</description>
+    <kind>CAP_Mag</kind>
+    <path>Mag_Drum</path>
+    <!--=====-->
+    <massFactor>0.21</massFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <magazineSize>57</magazineSize>
+        <swayFactor>0.15</swayFactor>
+        <bulk>0.2</bulk>
+        <recoilAmount>-0.12</recoilAmount>
+        <reloadTime>0.8</reloadTime>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>8</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Mag_LMG</defName>
+    <label>Belt feed</label>
+    <description>Blowback belt feed. Unmatched firepower.</description>
+    <kind>CAP_Mag</kind>
+    <path>Mag_Belt</path>
+    <!--=====-->
+    <massFactor>0.35</massFactor>
+    <rangeFactor>4</rangeFactor>
+    <warmupTimeFactor>0.5</warmupTimeFactor>
+    <burstCountFactor>5</burstCountFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <magazineSize>239</magazineSize>
+        <swayFactor>0.12</swayFactor>
+        <bulk>2</bulk>
+        <recoilAmount>-0.19</recoilAmount>
+        <reloadTime>3.8</reloadTime>
+        <aimedBurstShotCount>2</aimedBurstShotCount>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <Steel>12</Steel>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+    <!-- =============================== Grip / Stock -->
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Grip_Standard</defName>
+    <label>Scrap grip</label>
+    <description>Folded strip of scrap metal.</description>
+    <kind>CAP_Stock</kind>
+    <path>Stock_Grip_Wire</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>grip</label>
+	    <capacities>
+	    	<li>Blunt</li>
+	    </capacities>
+	    <power>2</power>
+	    <cooldownTime>1.56</cooldownTime>
+	    <armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+    </toolFactor>
+    <!--=====-->
+    <costList>
+      <Steel>2</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Grip_Wood</defName>
+    <label>Wood grip</label>
+    <description>Simple wooden grip, slightly sturdier and much more comfortable than the scrap grip.</description>
+    <kind>CAP_Stock</kind>
+    <path>Stock_Grip_Wood</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>grip</label>
+	    <capacities>
+	    	<li>Blunt</li>
+	    </capacities>
+	    <power>3</power>
+	    <cooldownTime>1.59</cooldownTime>
+	    <armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>0.03</massFactor>
+    <warmupTimeFactor>-0.01</warmupTimeFactor>
+    <cooldownFactor>-0.01</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>-0.03</swayFactor>
+        <bulk>0.02</bulk>
+        <recoilAmount>-0.02</recoilAmount>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <WoodLog>2</WoodLog>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Grip_WoodPommel</defName>
+    <label>Uranium pommel</label>
+    <description>Simple wooden grip with a carved uranium pommel. Very back-heavy and unbalances the weapon.</description>
+    <kind>CAP_Stock</kind>
+    <path>Stock_Grip_Pommel</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>grip</label>
+	    <capacities>
+	    	<li>Blunt</li>
+	    </capacities>
+	    <power>5</power>
+	    <cooldownTime>1.55</cooldownTime>
+	    <armorPenetrationBlunt>1.656</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>1.9</massFactor>
+    <cooldownFactor>-0.03</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>0.12</swayFactor>
+        <bulk>0.04</bulk>
+        <recoilAmount>-0.21</recoilAmount>
+        <parryChance>0.03</parryChance>
+        <counterParryBonus>0.03</counterParryBonus>
+      </li>
+    </additionalFactors>
+    <statModifiers>
+        <MeleeCritChance>0.77</MeleeCritChance>
+        <MeleeDodgeChance>0.05</MeleeDodgeChance>
+    </statModifiers>
+    <!--=====-->
+    <costList>
+      <WoodLog>2</WoodLog>
+      <Uranium>1</Uranium>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Stock_Wire</defName>
+    <label>Wire stock</label>
+    <description>Folded wire stock and grip. Not very comfortable but stabilizes the weapon reducing recoil and sway.</description>
+    <kind>CAP_Stock</kind>
+    <path>Stock_Wire</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>Stock</label>
+	    <capacities>
+	    	<li>Blunt</li>
+	    </capacities>
+	    <power>6</power>
+	    <cooldownTime>1.69</cooldownTime>
+	    <armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>0.17</massFactor>
+    <warmupTimeFactor>-0.01</warmupTimeFactor>
+    <cooldownFactor>-0.01</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>-0.62</swayFactor>
+        <bulk>1.89</bulk>
+        <recoilAmount>-0.21</recoilAmount>
+        <sightsEfficiency>0.3</sightsEfficiency>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>3</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Stock_Wood</defName>
+    <label>Wooden stock</label>
+    <description>Long and heavy wooden scrap stock. Lacks comfort but stabilizes the weapon and greatly reduces recoil.</description>
+    <kind>CAP_Stock</kind>
+    <path>Stock_Wood</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+			<label>stock</label>
+			<capacities>
+				<li>Blunt</li>
+			</capacities>
+			<power>8</power>
+			<cooldownTime>1.79</cooldownTime>
+			<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+			<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>1.1</massFactor>
+    <warmupTimeFactor>-0.01</warmupTimeFactor>
+    <cooldownFactor>-0.01</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>-1.04</swayFactor>
+        <bulk>3.33</bulk>
+        <recoilAmount>-0.46</recoilAmount>
+        <sightsEfficiency>0.3</sightsEfficiency>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>1</Steel>
+      <WoodLog>2</WoodLog>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Stock_WoodAxe</defName>
+    <label>Axe stock</label>
+    <description>Long and heavy wooden scrap stock with an axe head. Lacks comfort but stabilizes the weapon and greatly reduces recoil.</description>
+    <kind>CAP_Stock</kind>
+    <path>Stock_Wood</path>
+    <!--=====-->
+    <toolFactors>
+      <li Class="CombatExtended.ToolCE">
+		  	<label>stock</label>
+		  	<capacities>
+		  		<li>Blunt</li>
+		  	</capacities>
+		  	<power>8</power>
+		  	<cooldownTime>1.79</cooldownTime>
+		  	<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+		  	<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+      </li>
+      <li Class="CombatExtended.ToolCE">
+				<label>edge</label>
+				<capacities>
+					<li>Cut</li>
+				</capacities>
+				<power>25</power>
+				<cooldownTime>2.47</cooldownTime>
+				<armorPenetrationBlunt>4.69</armorPenetrationBlunt>
+				<armorPenetrationSharp>1.57</armorPenetrationSharp>
+				<linkedBodyPartsGroup>Edge</linkedBodyPartsGroup>
+			</li>
+    </toolFactors>
+    <massFactor>1.35</massFactor>
+    <cooldownFactor>-0.02</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>-1.45</swayFactor>
+        <bulk>3.5</bulk>
+        <recoilAmount>-0.50</recoilAmount>
+        <sightsEfficiency>0.3</sightsEfficiency>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>2</ChunkSlagSteel>
+      <Steel>3</Steel>
+      <WoodLog>2</WoodLog>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Stock_Recoil</defName>
+    <label>Recoil stock</label>
+    <description>Improvised recoil-absorbing stock. Lighter and more compact than the wood stock but with equivalent recoil reduction.</description>
+    <kind>CAP_Stock</kind>
+    <path>Stock_Recoil</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+			<label>stock</label>
+			<capacities>
+				<li>Blunt</li>
+			</capacities>
+			<power>7</power>
+			<cooldownTime>1.73</cooldownTime>
+			<armorPenetrationBlunt>2.705</armorPenetrationBlunt>
+			<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>0.6</massFactor>
+    <warmupTimeFactor>-0.01</warmupTimeFactor>
+    <cooldownFactor>-0.01</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>-0.85</swayFactor>
+        <bulk>2.1</bulk>
+        <recoilAmount>-0.5</recoilAmount>
+        <sightsEfficiency>0.3</sightsEfficiency>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>5</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+    <!-- =============================== Barrel -->
+  <!-- stub -->
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Barrel_Standard</defName>
+    <label>Stub barrel</label>
+    <description>nudges the bullet in the right direction.</description>
+    <kind>CAP_Barrel</kind>
+    <path>Barrel_Stub</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>muzzle</label>
+	    <capacities>
+	    	<li>Poke</li>
+	    </capacities>
+	    <power>2</power>
+	    <cooldownTime>1.54</cooldownTime>
+	    <armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+    </toolFactor>
+    <!--=====-->
+    <costList>
+      <Steel>2</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef ParentName="MMCAP_Compensator_Base">
+    <defName>CAP_Barrel_StubCompensator</defName>
+    <label>Stub compensator</label>
+    <description>Redirects propellant gasses as the bullet leaves the barrel, slightly reducing recoil.</description>
+    <kind>CAP_Barrel</kind>
+    <path>Barrel_Stub_Compensator</path>
+    <!--=====-->
+    <massFactor>0.1</massFactor>
+    <cooldownFactor>-0.01</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>0.08</swayFactor>
+        <bulk>0.08</bulk>
+        <recoilAmount>-0.09</recoilAmount>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <Steel>5</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef ParentName="MMCAP_Suppressor_Base">
+    <defName>CAP_Barrel_StubSuppressor</defName>
+    <label>Stub suppressor</label>
+    <description>Scatters and muffles propellant gasses concealing the shooter. Looks like a piece of repurposed starship plumbing.</description>
+    <kind>CAP_Barrel</kind>
+    <path>Barrel_Stub_Silencer</path>
+    <!--=====-->
+    <massFactor>0.07</massFactor>
+    <HuntingStealthFactor>0.1</HuntingStealthFactor>
+    <IncomingDamageFactor>-0.1</IncomingDamageFactor>
+    <cooldownFactor>-0.01</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>0.06</swayFactor>
+        <bulk>0.26</bulk>
+      </li>
+    </additionalFactors>  
+    <!--=====-->
+    <costList>
+      <Steel>5</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef ParentName="MMCAP_LightSpike_Base">
+    <defName>CAP_Barrel_StubSpike</defName>
+    <label>Stub spike bayonet</label>
+    <description>Spike bayonet meant to be affixed to a much heavier and longer firearm. Unbalances the weapon.</description>
+    <kind>CAP_Barrel</kind>
+    <path>Barrel_Stub_Spike</path>
+    <!--=====-->
+    <massFactor>0.5</massFactor>
+    <cooldownFactor>-0.01</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>0.15</swayFactor>
+        <bulk>0.41</bulk>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <Steel>6</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Barrel_StubCleaver</defName>
+    <label>Stub cleaver</label>
+    <description>A commerical cleaver blade fixed to the stub barrel. Weighing nearly 0.9kg it greatly unbalances the weapon, but provides devestating chopping attacks.</description>
+    <kind>CAP_Barrel</kind>
+    <path>Barrel_Stub_Cleaver</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>cleaver</label>
+	    <capacities>
+        <li>Cut</li>
+	    </capacities>
+	    <power>13</power>
+	    <cooldownTime>1.25</cooldownTime>
+      <armorPenetrationBlunt>0.761</armorPenetrationBlunt>
+			<armorPenetrationSharp>0.68</armorPenetrationSharp>
+			<linkedBodyPartsGroup>Edge</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>0.87</massFactor>
+    <cooldownFactor>-0.02</cooldownFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>0.17</swayFactor>
+        <bulk>1.1</bulk>
+        <parryChance>0.09</parryChance>
+        <counterParryBonus>0.09</counterParryBonus>
+      </li>
+    </additionalFactors>
+    <statModifiers>
+        <MeleeCritChance>0.14</MeleeCritChance>
+        <MeleeDodgeChance>0.05</MeleeDodgeChance>
+    </statModifiers>
+    <!--=====-->
+    <costList>
+      <Steel>8</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <!-- Short -->
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Barrel_Short</defName>
+    <label>Short barrel</label>
+    <description>Unrifled, heat shielded barrel.</description>
+    <kind>CAP_Barrel</kind>
+    <path>Barrel_Short</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>muzzle</label>
+	    <capacities>
+	    	<li>Poke</li>
+	    </capacities>
+	    <power>3</power>
+	    <cooldownTime>1.56</cooldownTime>
+	    <armorPenetrationBlunt>0.888</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>0.2</massFactor>
+    <rangeFactor>2</rangeFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>0.4</swayFactor>
+        <bulk>1</bulk>
+        <recoilAmount>-0.12</recoilAmount>
+        <shotSpread>-0.12</shotSpread>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>2</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Barrel_Medium</defName>
+    <label>Medium barrel</label>
+    <description>Unrifled medium length barrel.</description>
+    <kind>CAP_Barrel</kind>
+    <path>Barrel_Medium</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>muzzle</label>
+	    <capacities>
+	    	<li>Poke</li>
+	    </capacities>
+	    <power>6</power>
+	    <cooldownTime>1.26</cooldownTime>
+	    <armorPenetrationBlunt>2.565</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>0.45</massFactor>
+    <rangeFactor>4</rangeFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>-1.01</swayFactor>
+        <bulk>2.5</bulk>
+        <recoilAmount>-0.23</recoilAmount>
+        <shotSpread>-0.21</shotSpread>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+      <Steel>5</Steel>
+      <WoodLog>2</WoodLog>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Barrel_Long</defName>
+    <label>Long barrel</label>
+    <description>Unrifled long length barrel.</description>
+    <kind>CAP_Barrel</kind>
+    <path>Barrel_Long</path>
+    <!--=====-->
+    <toolFactor Class="CombatExtended.ToolCE">
+	    <label>muzzle</label>
+	    <capacities>
+	    	<li>Poke</li>
+	    </capacities>
+	    <power>8</power>
+	    <cooldownTime>1.55</cooldownTime>
+	    <armorPenetrationBlunt>2.76</armorPenetrationBlunt>
+	    <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+    </toolFactor>
+    <massFactor>0.79</massFactor>
+    <rangeFactor>6</rangeFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <swayFactor>-0.78</swayFactor>
+        <bulk>4.5</bulk>
+        <recoilAmount>-0.38</recoilAmount>
+        <shotSpread>-0.27</shotSpread>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <ChunkSlagSteel>2</ChunkSlagSteel>
+      <Steel>1</Steel>
+      <WoodLog>3</WoodLog>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+    <!-- =============================== Sights -->
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Sight_CrudeIron</defName>
+    <label>Crude iron sights</label>
+    <description>Fixed rear notch sight and front post.</description>
+    <kind>CAP_Sight</kind>
+    <path>Sights_Iron</path>
+    <!--=====-->
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <sightsEfficiency>0.5</sightsEfficiency>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <Steel>3</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Sight_Iron</defName>
+    <label>Elevated iron sights</label>
+    <description>Raised and adjustable iron sights.</description>
+    <kind>CAP_Sight</kind>
+    <path>Sights_Iron_Raised</path>
+    <!--=====-->
+    <massFactor>0.05</massFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <sightsEfficiency>0.7</sightsEfficiency>
+        <swayFactor>0.02</swayFactor>
+        <bulk>0.08</bulk>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <Steel>7</Steel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+  <ModularWeapons.ModularPartDef>
+    <defName>CAP_Sight_Reflex</defName>
+    <label>Wire guides</label>
+    <description>2 pairs of adjustable bale wire housed in a scrap pipe.</description>
+    <kind>CAP_Sight</kind>
+    <path>Sights_Wire</path>
+    <!--=====-->
+    <massFactor>0.1</massFactor>
+    <additionalFactors>
+      <li Class="ModularWeapons_CEModule.MWP_CEStats">
+        <sightsEfficiency>0.75</sightsEfficiency>
+        <swayFactor>0.07</swayFactor>
+        <bulk>0.13</bulk>
+      </li>
+    </additionalFactors>
+    <!--=====-->
+    <costList>
+      <Steel>1</Steel>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+    </costList>
+  </ModularWeapons.ModularPartDef>
+
+</Defs>

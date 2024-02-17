@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ModMetaData>
+	<name>Mini Modulars - crude auto-pistol</name>
+	<author>Bx395</author>
+	<packageId>Bx395.MiniModulars.CAP</packageId>
+    <supportedVersions>
+	<li>1.4</li>
+	</supportedVersions>
+	<description>[CE] Adds a crudely made pistol caliber scrap pistol. Inspired by the pipe and improvised weaponry from the Fallout / Metro series.</description>
+	<loadAfter>
+		<li>kaitorisenkou.ModularWeapons</li>
+		<li>CETeam.CombatExtended</li>
+	</loadAfter>
+</ModMetaData>
